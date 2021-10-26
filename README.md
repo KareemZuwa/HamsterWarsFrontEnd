@@ -1,4 +1,20 @@
-# Getting Started with Create React App
+# HamsterWars
+
+## Boilerplate
+
+Jag började med att göra ett Git-Hub repo
+
+Jag installerade: 
+* npx create-react-app med typescript
+* npm i express cors firebase-admin
+* npm react-router-dom med @types/...
+
+sedan pushade jag till main
+
+## Flytta över backend
+
+Jag flyttade över backendmappen in till min frontend React
+Testade alla endpoints för att se till att de funkade
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
