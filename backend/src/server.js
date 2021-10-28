@@ -43,6 +43,12 @@ app.use('/winners', winnerRouter)
 // //EndPionts for losers//
 app.use('/losers', loserRouter)
 
+
+app.get('*', (req, res) => {
+    res.sendFile(__dirname + '/build/index.html')
+})
+
+
 // Starta servern
 app.listen(PORT, () => {
 	console.log(`Server is listening on port ${PORT}.`)
