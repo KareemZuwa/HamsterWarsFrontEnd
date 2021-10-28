@@ -1,5 +1,4 @@
 import Cutest from './Cutest'
-import bigHamster from '../../logos/half-hamster.png'
 
 const Start = () => {
     return (
