@@ -15,6 +15,8 @@ sedan pushade jag till main
 
 Jag flyttade över backendmappen in till min frontend React
 Testade alla endpoints för att se till att de funkade
+fick problem då jag hade två package.json så tog bort package.json plus package-lock.json från min backend
+svettigt där ett tag =)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
