@@ -29,7 +29,7 @@ app.use( (req, res, next) => {
 //ROUTES AND ENDPOINTS
 //Statisk mapp
 app.use( '/', express.static(__dirname + '/../build') )
-app.use( '/imgs', express.static(__dirname + '/../imgs/hamsters') )
+// app.use( '/imgs', express.static(__dirname + '/../imgs/hamsters') )
 
 //Hamster endpoints
 app.use('/hamsters', hamstersRouter)
@@ -45,7 +45,7 @@ app.use('/losers', loserRouter)
 
 
 app.get('*', (req, res) => {
-    res.sendFile(__dirname + '/../build/index.html')
+    res.sendFile(__dirname + '/build/index.html')
 })
 
 
