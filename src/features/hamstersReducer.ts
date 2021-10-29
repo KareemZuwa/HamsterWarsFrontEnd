@@ -16,7 +16,7 @@ const initialState: Hamster[] = [
         favFood: 'sallad',
         age: 2,
         name: 'Bobby',
-        imgName: 'http/dfdf', // URL to image
+        imgName: 'https://image.posterlounge.se/images/l/1895875.jpg', // URL to image
         id: '1'
     }
 
