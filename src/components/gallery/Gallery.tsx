@@ -12,7 +12,11 @@ const Gallery = () => {
             <ul className="hamsters">
         
                     {hamsters.map(hamster => (
-                        <li key={hamster.id}> Namn: {hamster.name} Vinster: {hamster.wins}</li>
+                        <li key={hamster.id}> 
+                        <img src={hamster.imgName} alt="hamster" width="80px"/>
+                        <span>Namn: {hamster.name} </span>
+                        <span>Vinster: {hamster.wins} </span>
+                        </li>
                     ))}
                
             </ul>

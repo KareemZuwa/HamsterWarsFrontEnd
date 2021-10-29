@@ -15,8 +15,8 @@ h1, h2, h3, p {
 .wrapper {
   background: linear-gradient(#517078, #869082);
   margin:auto;
-  margin-top: 4em;
-  height: 80vh;
+  margin-top: 2em;
+  height: 85vh;
   width: 85vw;
   border-radius: 1em;
   padding: 2em;
