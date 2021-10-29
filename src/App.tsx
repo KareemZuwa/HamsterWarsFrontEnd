@@ -5,7 +5,7 @@ import Contest from './components/contest/Contest';
 import Gallery from './components/gallery/Gallery';
 import Stats from './components/statistics/Stats';
 import History from './components/history/History'; 
-import bigHamster from './logos/half-hamster.png'
+// import bigHamster from './logos/half-hamster.png'
 import './App.css';
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
 	    </Switch>
 
         </main>
-        <img className="big-hamster" src={bigHamster} alt="big hamster"/>
+        {/* <img className="big-hamster" src={bigHamster} alt="big hamster"/> */}
 
       </section>
     </div>

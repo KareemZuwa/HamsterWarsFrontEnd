@@ -8,8 +8,19 @@ const actions = {  }
 
 // Värdet på "products" när appen startar
 const initialState: Hamster[] = [
-]
+    {
+        games: 0,
+        wins: 2,
+        loves: "promenader",
+        defeats: 0,
+        favFood: 'sallad',
+        age: 2,
+        name: 'Bobby',
+        imgName: 'http/dfdf', // URL to image
+        id: '1'
+    }
 
+]
 
 const hamsterReducer = createReducer(initialState, {
 
