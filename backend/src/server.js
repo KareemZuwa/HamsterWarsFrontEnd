@@ -45,7 +45,7 @@ app.use('/losers', loserRouter)
 
 
 app.get('*', (req, res) => {
-    res.sendFile(__dirname + '/build/index.html')
+    res.sendFile(__dirname + '/../build/index.html')
 })
 
 
