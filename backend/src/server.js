@@ -16,7 +16,7 @@ let requestCount = 0
 // Setup MiddleWare
 app.use( cors() )
 //Statisk mapp
-app.use( express.static(__dirname + '/../build') )
+app.use( express.static(__dirname + '/../../build') )
 // app.use( '/imgs', express.static(__dirname + '/../imgs/hamsters') )
 
 app.use( express.urlencoded({ extended: true }) )
@@ -46,7 +46,7 @@ app.use('/losers', loserRouter)
 
 
 app.get('*', (req, res) => {
-    res.sendFile(__dirname + '/build/index.html')
+    res.sendFile(__dirname + '/../../build/index.html')
 })
 
 
