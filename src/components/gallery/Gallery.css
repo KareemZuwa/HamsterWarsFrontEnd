@@ -10,6 +10,19 @@
 .hamsters li {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    max-width: 8em;
+    height: 12em;
+    max-width: 12em;
+    background-color: #3E4F61;
+    padding: 0.5em;
+    border-radius: 1em;
+}
+
+.hamsters img {
+  margin-top: .4em;
+}
+
+.hamsters span {
+  color: white;
 }

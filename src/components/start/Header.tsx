@@ -6,11 +6,11 @@ const Header = () => {
     return (
         <div className="header">
             <nav>
-                <Link to="/"><img src={logo} alt="" width="100px"/></Link>
-                <Link to="/tävla"> TÄVLA </Link>
-                <Link to="/galleri"> GALLERI </Link>
-                <Link to="/statistik"> STATISTIK </Link>
-                <Link to="/historia"> HISTORIK </Link>
+                <Link to="/"><img className="hamster-logo" src={logo} alt="" width="100px"/></Link>
+                <Link className="header-links" to="/tävla"> TÄVLA </Link>
+                <Link className="header-links" to="/galleri"> GALLERI </Link>
+                <Link className="header-links" to="/statistik"> STATISTIK </Link>
+                <Link className="header-links" to="/historik"> HISTORIK </Link>
 		    </nav> 
             <h1> HAMSTER WARS </h1> 
         </div>

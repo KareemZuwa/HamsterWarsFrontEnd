@@ -139,10 +139,16 @@ async function cutestAll() {
 	});
 	let topDiff = resultArray.splice(0, 1);
 	let cutest = [];
+	const uniqueId = () => {
+        const dateString = Date.now().toString(36);
+        const randomness = Math.random().toString(36).substr(2);
+        return dateString + randomness;
+      };
 	for (let i = 0; i < topDiff.length; i++) {
 	  let hamster = await db.collection(HAMSTERS).doc(topDiff[i].id).get();
 	  let data = hamster.data();
-	  cutest.push(data);
+	  let dataWithId = {...data, id: uniqueId()};
+	  cutest.push(dataWithId);
 	}
 	return cutest;
   }

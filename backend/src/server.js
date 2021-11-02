@@ -17,7 +17,7 @@ let requestCount = 0
 app.use( cors() )
 //Statisk mapp
 app.use( express.static(__dirname + '/../../build') )
-// app.use( '/imgs', express.static(__dirname + '/../imgs/hamsters') )
+app.use( '/imgs', express.static(__dirname + '/../imgs/hamsters') )
 
 app.use( express.urlencoded({ extended: true }) )
 app.use( express.json() )

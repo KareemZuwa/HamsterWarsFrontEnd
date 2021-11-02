@@ -15,20 +15,15 @@ h1, h2, h3, p {
 .wrapper {
   background: linear-gradient(#517078, #869082);
   margin:auto;
-  margin-top: 2em;
-  height: 85vh;
-  width: 85vw;
-  border-radius: 1em;
+  height: auto 100vh;
+  width: 80vw;
+  border-radius:0.5em;
   padding: 2em;
-  text-align: left;
 }
 
-main {
-  padding-left: 8em;
-}
 
 h1 {
-  color: rgb(233, 233, 233);
+  color: #e8e8e8;
 }
 
 .big-hamster {

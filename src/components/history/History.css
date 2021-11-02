@@ -1,0 +1,8 @@
+.match-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.match-card h3 {
+    color: white;
+}

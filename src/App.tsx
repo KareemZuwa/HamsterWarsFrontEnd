@@ -5,7 +5,7 @@ import Contest from './components/contest/Contest';
 import Gallery from './components/gallery/Gallery';
 import Stats from './components/statistics/Stats';
 import History from './components/history/History'; 
-// import bigHamster from './logos/half-hamster.png'
+
 import './App.css';
 
 function App() {
@@ -19,12 +19,9 @@ function App() {
             <Route path="/tävla"> <Contest /> </Route>
             <Route path="/galleri"> <Gallery /> </Route>
             <Route path="/statistik"> <Stats /> </Route>
-            <Route path="/historia"> <History /> </Route>
-      
+            <Route path="/historik"> <History /> </Route>
 	    </Switch>
-
         </main>
-        {/* <img className="big-hamster" src={bigHamster} alt="big hamster"/> */}
 
       </section>
     </div>

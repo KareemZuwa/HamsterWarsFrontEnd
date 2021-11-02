@@ -11,7 +11,17 @@
     font-family: Montserrat;
     font-size: .8em;
     font-weight: 600;
+    transition: all 0.5s ease-in-out;
 }
+
+.header-links:hover {
+    border-bottom: 1px solid white;
+}
+
+.hamster-logo :hover {
+    border-bottom: 1px solid transparent;
+}
+
 
 .header h1 {
     text-align: center;
@@ -21,6 +31,43 @@
 
 .start-page {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     flex-direction: row;
+    align-items: center;
+    padding:2em 8em;
 }
+.start-page h3 {
+    color: #e8e8e8;
+
+}
+
+.cutest-hamster-pic {
+    margin-top: -3.5em;
+}
+
+.about {
+    max-width: 30em;
+    align-self: center;
+    margin-left:3em;
+}
+
+/*Styling for Cutest */
+.start-contest-button {
+    display:inline-block;
+    text-decoration:none;
+    padding:0.35em 1.2em;
+    border-radius:0.12em;
+    border:0.1em solid #e8e8e8;
+    margin:3em 0.3em 0.3em 0;
+    box-sizing: border-box;
+    color: #e8e8e8;
+    transition: all 0.2s;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.start-contest-button:hover {
+    color:#000000;
+    background-color: #e8e8e8;
+}
+
