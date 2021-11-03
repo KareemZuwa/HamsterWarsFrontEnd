@@ -1,4 +1,5 @@
 import { Switch, Route } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
 import Start from './components/start/Start'
 import Header from './components/start/Header';
 import Contest from './components/contest/Contest';
@@ -10,6 +11,7 @@ import './App.css';
 
 function App() {
   return (
+    <RecoilRoot>
     <div className="App">
       <section className="wrapper">
         <Header />
@@ -25,6 +27,7 @@ function App() {
 
       </section>
     </div>
+    </RecoilRoot>
   );
 }
 

@@ -1,0 +1,22 @@
+.overlay {
+	/* Overlay ligger i #root i DOM */
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.5);
+	height: 100vh;
+	width: 100vw;
+	top: 0em;
+	left: 0em;
+}
+
+.overlay .dialog {
+	background-color: #3E4F61;
+	color: #e8e8e8;
+	/* width: 10em;
+	height: 10em; */
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	padding: 1em;
+}

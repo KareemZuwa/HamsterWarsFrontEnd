@@ -3,9 +3,8 @@ import { Hamster } from '../models/Hamster'
 
 // Dessa actions finns - detta är vad användaren kan göra
 const getHamsters = createAction<Hamster>('get Hamster Array')
-// const addHamster = createAction<Hamster>('add one hamster')
 const removeHamster = createAction<string>('remove one hamster')
-// const ?? = createAction(??)
+//Actions att skicka med
 const actions = { getHamsters, removeHamster }
 
 // Visar array på "hamsters" när appen startar
@@ -17,7 +16,6 @@ const hamsterReducer = createReducer(initialState, {
 
     //Ta bort hamster med ett visst id
     [removeHamster.toString()]: (state, action) => state.filter(hamster => hamster.id !== action.payload)
-
 })
 
 export { actions, initialState, hamsterReducer }

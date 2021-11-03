@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { RootState } from '../../store'
 import { actions } from '../../features/hamstersReducer'
+import GalleryHeader from './GalleryHeader'
 import '../gallery/Gallery.css'
 
 const Gallery = () => {
@@ -27,16 +28,14 @@ const Gallery = () => {
 
     return (
         <div>
-            <h2>Galleri på Hamstrar</h2>
-
+            <GalleryHeader />
             <ul className="hamsters">
 
-        
                     {hamsters ?
                     hamsters.map(hamster => (
                         <li key={hamster.id}> 
                         <img src={'/img/' + hamster.imgName} alt="hamster" width="100px"/>
-                        <span>Namn: {hamster.name} </span>
+                        <p>Namn: {hamster.name} </p>
                         <button onClick={()=> {deleteHamster(hamster.id); handleRemove(hamster.id)}}> Radera hamster </button>
                         </li>
                     )): <h3> Väntar på galleri med hamsters </h3>}
