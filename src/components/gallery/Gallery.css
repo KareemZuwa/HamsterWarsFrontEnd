@@ -34,9 +34,10 @@
     height: 12em;
     width: 9em;
     background-color: #3E4F61;
-    padding: 0.5em 0.5em 2em;
-    border-radius: 1em;
+    padding: 0.5em 0.5em 1.7em;
+    border-radius: .2em;
     overflow:hidden;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .hamsters img {
