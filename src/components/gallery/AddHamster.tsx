@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useDispatch} from 'react-redux'
+import { actions } from '../../features/hamstersReducer'
 import { useRecoilState } from 'recoil'
 import atomToggle from '../../atoms/Toggle'
 import './AddHamster.css'
@@ -6,11 +8,12 @@ import './AddHamster.css'
 //Hämta hamster model
 
 const AddHamster = () => {
+    const dispatch = useDispatch()
     const [toggle,setToggle] = useRecoilState(atomToggle)
 
     //inputfälten
     const [hamsterName, setHamsterName] = useState<string>('')
-    const [age, setAge] = useState<number>(0)
+    const [age, setAge] = useState<number>()
     const [favFood, setFavFood] = useState<string>('')
     const [loves, setLoves] = useState<string>('')
     const [imageUrl, setImageUrl] = useState<string>('')
@@ -19,24 +22,27 @@ const AddHamster = () => {
 
     //Data som skickas in till 
     const data = {  
-            name: {hamsterName}, 
-            age: {age}, 
-            imgName: {imageUrl},
-            loves: {loves},
-            favFood: {favFood},
+            name: hamsterName, 
+            age: age, 
+            imgName: imageUrl, 
+            loves: loves,
+            favFood: favFood,
             games: 0,
             wins: 0,
             defeats: 0
     }
 
-    const addHamster = async ()=> {
-        fetch('/hamsters/', { method: 'POST', headers: {"Content-Type" : "application/json"},
-        body: JSON.stringify(data)}) 
-        .then(res => res.json()) 
-        .then(data => { console.log("Success:" , data); }) 
-        .catch((err) => {console.log(err)});
+    const postHamsterToApi = async ()=> {
+        const response = await fetch('/hamsters/', 
+        { method: 'POST', headers: {"Content-Type" : "application/json"},
+        body: JSON.stringify(data)})
+        const newHamster = await response.json()
         setToggle(!toggle)
-     }
+        console.log("Success", newHamster);
+        await dispatch(actions.addHamster(newHamster))
+    }
+
+     
 
     //Add till redux store
     //  const addOneHamster = (hamsterId: string) => dispatch(actions.addHamster(hamsterId))
@@ -54,7 +60,7 @@ const AddHamster = () => {
                         className="inputs"/>
                     </div>
                     <div className="input-fields">
-                        <p>Ålder:</p> <input type="number" placeholder="Ålder" 
+                        <p>Ålder:</p> <input type="number" placeholder="0" 
                         onChange={e => setAge(e.target.valueAsNumber)} value={age}
                         className="inputs"/>
                     </div>
@@ -75,7 +81,7 @@ const AddHamster = () => {
                     </div>
 
                     <div className="buttons">
-                    <button onClick={addHamster}> Lägg Till </button>
+                    <button onClick={postHamsterToApi}> Lägg Till </button>
 				    <button onClick={()=> setToggle(!toggle)}> Ångra </button>
                     </div>
 				    
