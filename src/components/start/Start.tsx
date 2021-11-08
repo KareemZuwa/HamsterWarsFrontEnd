@@ -16,7 +16,7 @@ const Start = () => {
             setHamstersArray(dataHamster)
         }
         sendRequest()
-	}, [])
+	}, [setHamstersArray])
 
     return (
         <div className="start-page">

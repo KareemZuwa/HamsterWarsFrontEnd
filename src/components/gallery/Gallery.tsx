@@ -1,14 +1,9 @@
-// import { useSelector, useDispatch } from 'react-redux'--REDUX
 import { useRecoilState } from 'recoil'
 import atomHamsters from '../../atoms/Hamsters'
-// import { RootState } from '../../store' --REDUX
-// import { actions } from '../../features/hamstersReducer'--REDUX
 import GalleryHeader from './GalleryHeader'
 import '../gallery/Gallery.css'
 
 const Gallery = () => {
-    // const dispatch = useDispatch()-- REDUX
-    // const hamsters = useSelector((state: RootState) => state.hamsters)--REDUX
     const [hamstersArray,setHamstersArray] = useRecoilState(atomHamsters)
 
     const deleteHamster = async function deleteHamster(id: string) {
@@ -19,7 +14,6 @@ const Gallery = () => {
         }) 
         .catch(err => console.log(err));
     }
-    // const handleRemove = (hamsterId: string) => dispatch(actions.removeHamster(hamsterId))//REDUX
     const removeHamsterObject = (hamsterId: string) => {
         setHamstersArray((hamstersArray)=> hamstersArray.filter((hamsterObject => hamsterObject.id !== hamsterId)))}
 

@@ -1,6 +1,4 @@
 import { useState } from 'react'
-// import { useDispatch} from 'react-redux'--REDUX
-// import { actions } from '../../features/hamstersReducer'--REDUX
 import { useRecoilState } from 'recoil'
 import atomToggle from '../../atoms/Toggle'
 import atomHamsters from '../../atoms/Hamsters'
@@ -9,7 +7,6 @@ import './AddHamster.css'
 //Hämta hamster model
 
 const AddHamster = () => {
-    // const dispatch = useDispatch()--REDUX
     const [toggle,setToggle] = useRecoilState(atomToggle)
     const [hamstersArray,setHamstersArray] = useRecoilState(atomHamsters)
 
