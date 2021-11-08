@@ -1,11 +1,12 @@
 import { useEffect } from 'react'
 import { useRecoilState } from 'recoil'
 import atomRandomHamster from '../../atoms/RandomHamster'
-import './Contest.css'
 import { Hamster } from '../../models/Hamster'
+import { WinningHamster } from '../../models/WinningHamster'
+import handleLosingHamster from '../../modules/LosingHamster'
+import './Contest.css'
 
 const RandomHamster = () => {
-
      //Random på två hamstrar
     const [randomHamster,setRandomHamster] = useRecoilState(atomRandomHamster)
 
@@ -17,32 +18,39 @@ const RandomHamster = () => {
         }
         sendRequest()
 	}, [])
-
     //Slumpa hamster 1
     const randomHamster1: Hamster = randomHamster[Math.floor(Math.random()*randomHamster.length)];
     //filtrera bort första random hamstern
-    const selectedHamster= randomHamster.filter(hamster=> hamster.id !== randomHamster1.id)
+    const selectedHamster= randomHamster.filter(hamster=> hamster.id !== randomHamster1.id);
     //Slumpa hamster 2
     const randomHamster2: Hamster = randomHamster[Math.floor(Math.random()*selectedHamster.length)];
     //Winnig Hamster
-    const datawinHamster: Hamster = {wins: randomHamster1.wins+1, games:randomHamster1.games+1, loves:randomHamster1.loves, defeats:randomHamster1.defeats, age: randomHamster1.age, favFood:randomHamster1.favFood, name:randomHamster1.name, imgName:randomHamster1.imgName, id:randomHamster1.id}
-    //Vad händer när användaren klickar på sötast
+    const dataWinHamsterOne: WinningHamster = { wins: randomHamster1.wins+ 1, games:randomHamster1.games + 1 }
+    const dataWinHamsterTwo: WinningHamster = { wins: randomHamster2.wins+ 1, games:randomHamster2.games + 1 }
+    
+    //Vad händer när användaren klickar på sötast 1
     const handleWinHamsterOne = async() => {
         try { 
             const response = await fetch('/hamsters/' + randomHamster1.id, 
-        { method: 'PUT', headers: { 'Content-Type' : 'application/json'},
-        body: JSON.stringify(datawinHamster)})
-        const changeHamsterOne = await response.json()
-        console.log('Success', changeHamsterOne)
+            { method: 'PUT', headers: { 'Content-Type' : 'application/json'},
+            body: JSON.stringify(dataWinHamsterOne)})
+            const changeHamsterOne = await response.json()
+            console.log('Success', changeHamsterOne)
         } catch (err) {
             console.log(err)
-        }
-        
-
-        
+        }  
     }
-    const handleWinHamsterTwo = () => {
-        console.log(randomHamster2.name, randomHamster2.id)
+    //Vad händer när användaren klickar på sötast 2
+    const handleWinHamsterTwo = async() => {
+        try { 
+            const response = await fetch('/hamsters/' + randomHamster2.id, 
+            { method: 'PUT', headers: { 'Content-Type' : 'application/json'},
+            body: JSON.stringify(dataWinHamsterTwo)})
+            const changeHamsterTwo = await response.json()
+            console.log('Success', changeHamsterTwo)
+        } catch (err) {
+            console.log(err)
+        }  
     }
 
     return (
@@ -52,13 +60,13 @@ const RandomHamster = () => {
                 <article>
                 <img src={'/img/' + randomHamster1.imgName} alt={randomHamster1.name}/>
                 <h3>{randomHamster1.name}</h3>
-                <button onClick={handleWinHamsterOne}>Jag Är Sötast</button>
+                <button className="cutest-button" onClick={()=> {handleWinHamsterOne() ; handleLosingHamster(randomHamster2)}}>Jag Är Sötast</button>
                 </article>
                 <h1>VS</h1>
                 <article>
                 <img src={'/img/' + randomHamster2.imgName} alt={randomHamster2.name}/>
                 <h3>{randomHamster2.name}</h3>
-                <button onClick={handleWinHamsterTwo}>Jag Är Sötast</button>
+                <button className="cutest-button" onClick={()=> {handleWinHamsterTwo() ; handleLosingHamster(randomHamster1)}}>Jag Är Sötast</button>
                 </article>
             </section>
 
