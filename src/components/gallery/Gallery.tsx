@@ -1,7 +1,6 @@
 // import { useSelector, useDispatch } from 'react-redux'--REDUX
 import { useRecoilState } from 'recoil'
 import atomHamsters from '../../atoms/Hamsters'
-import { useEffect } from 'react'
 // import { RootState } from '../../store' --REDUX
 // import { actions } from '../../features/hamstersReducer'--REDUX
 import GalleryHeader from './GalleryHeader'
@@ -11,18 +10,6 @@ const Gallery = () => {
     // const dispatch = useDispatch()-- REDUX
     // const hamsters = useSelector((state: RootState) => state.hamsters)--REDUX
     const [hamstersArray,setHamstersArray] = useRecoilState(atomHamsters)
-
-    useEffect(() => {
-		async function sendRequest() {
-            const response = await fetch('/hamsters')
-            const dataHamster = await response.json() 
-            // dispatch(actions.getHamsters(dataHamster))--REDUX
-            setHamstersArray(dataHamster)
-        }
-        sendRequest()
-	}, [])
-
-    console.log(hamstersArray)
 
     const deleteHamster = async function deleteHamster(id: string) {
         fetch('/hamsters/' + id, { method: 'DELETE' }) 

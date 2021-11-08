@@ -5,11 +5,12 @@ import Header from './components/start/Header';
 import Contest from './components/contest/Contest';
 import Gallery from './components/gallery/Gallery';
 import Stats from './components/statistics/Stats';
-import History from './components/history/History'; 
+import History from './components/history/History';
 
 import './App.css';
 
 function App() {
+
   return (
     <RecoilRoot>
     <div className="App">

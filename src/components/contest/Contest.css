@@ -45,3 +45,7 @@
     margin: 0em;
     font-size: 1.5em; 
 }
+
+.cutest-button.hide {
+    display: hidden;
+}

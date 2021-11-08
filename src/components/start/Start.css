@@ -43,12 +43,19 @@
 
 .cutest-hamster-pic {
     margin-top: -3.5em;
+    width: 12em;
+    height: 14em;
+    object-fit: cover;
 }
 
 .about {
     max-width: 30em;
+    height: auto;
     align-self: center;
     margin-left:3em;
+}
+.about p {
+    padding-bottom: 2.4em;
 }
 
 /*Styling for Cutest */
@@ -64,6 +71,7 @@
     transition: all 0.2s;
     background-color: transparent;
     cursor: pointer;
+    font-size: 1.5em; 
 }
 
 .start-contest-button:hover {
