@@ -1,15 +1,17 @@
 import { useState } from 'react'
-import { useDispatch} from 'react-redux'
-import { actions } from '../../features/hamstersReducer'
+// import { useDispatch} from 'react-redux'--REDUX
+// import { actions } from '../../features/hamstersReducer'--REDUX
 import { useRecoilState } from 'recoil'
 import atomToggle from '../../atoms/Toggle'
+import atomHamsters from '../../atoms/Hamsters'
 import './AddHamster.css'
 
 //Hämta hamster model
 
 const AddHamster = () => {
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()--REDUX
     const [toggle,setToggle] = useRecoilState(atomToggle)
+    const [hamstersArray,setHamstersArray] = useRecoilState(atomHamsters)
 
     //inputfälten
     const [hamsterName, setHamsterName] = useState<string>('')
@@ -34,18 +36,15 @@ const AddHamster = () => {
 
     const postHamsterToApi = async ()=> {
         const response = await fetch('/hamsters/', 
-        { method: 'POST', headers: {"Content-Type" : "application/json"},
+        { method: 'POST', headers: {Accept: 'application/json', "Content-Type" : "application/json"},
         body: JSON.stringify(data)})
         const newHamster = await response.json()
-        setToggle(!toggle)
         console.log("Success", newHamster);
-        await dispatch(actions.addHamster(newHamster))
+        // dispatch(actions.addHamster(newHamster))--REDUX
+        await setHamstersArray([...hamstersArray, newHamster])
+        setToggle(!toggle)
     }
 
-     
-
-    //Add till redux store
-    //  const addOneHamster = (hamsterId: string) => dispatch(actions.addHamster(hamsterId))
     // valideringsfunktioner som skall trigga classer
     //valideringfsfunktion som skall trigga lägg till knapp
 
