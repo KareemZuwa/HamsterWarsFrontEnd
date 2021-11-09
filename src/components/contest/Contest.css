@@ -3,7 +3,10 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: .2em;
     padding-bottom: 2em;
+}
 
+.random-hamster-grid section article h3, .random-hamster-grid section article p {
+    color: #e8e8e8;
 }
 
 .random-hamster-grid section {
@@ -48,4 +51,14 @@
 
 .cutest-button.hide {
     display: hidden;
+}
+
+.vinnarinfo.hide {
+    display: none;
+
+}
+
+.vinnarinfo.reveal {
+    display: block;
+    
 }

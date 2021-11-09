@@ -1,0 +1,10 @@
+.match-winner {
+	/* Overlay ligger i #root i DOM */
+	position: fixed;
+	background-color:#3E4F61;
+	height: 48vh;
+	width: 80vw;
+	top: 20.1em;
+    border-radius: .2em;
+	
+}

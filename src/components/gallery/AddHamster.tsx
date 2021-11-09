@@ -83,9 +83,7 @@ const AddHamster = () => {
 				    
 			    </div>
             </div>
-            
-            
-            
+                
         </div>
     )
 }
