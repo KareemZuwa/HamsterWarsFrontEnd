@@ -34,18 +34,18 @@ const MatchWinner = () => {
 
     return (
         <div className="match-winner">
-            <section>
+            <section className="winner-grid">
                 {findWinnerHamster ? (
                     <article>
                             <img src={'/img/' + findWinnerHamster.imgName} alt={findWinnerHamster.name}/>
-                            <h1>{findWinnerHamster.name} Vann =)</h1>
+                            <h1>{findWinnerHamster.name} Vann 😺</h1>
                             <p>Vinster: {findWinnerHamster.wins +1} , Förluster: {findWinnerHamster.defeats}</p>
                     </article>
                 ): null}
                 {findLoserHamster ? 
                     <article>
                             <img src={'/img/' + findLoserHamster.imgName} alt={findLoserHamster.name}/>
-                            <h1>{findLoserHamster.name} förlorade =(</h1>
+                            <h1>{findLoserHamster.name} förlorade 😿</h1>
                             <p>Vinster: {findLoserHamster.wins} , Förluster: {findLoserHamster.defeats +1}</p>
                     </article>
                 :null}

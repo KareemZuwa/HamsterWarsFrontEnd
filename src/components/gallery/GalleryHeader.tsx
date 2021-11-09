@@ -8,7 +8,7 @@ const GalleryHeader = () => {
     return (
         <div className="galleri-rubrik">
 
-            <h2>Galleri på Hamstrar</h2>
+            <h2>GALLERI</h2>
 
             <button 
             onClick={()=> setToggle(!toggle)}

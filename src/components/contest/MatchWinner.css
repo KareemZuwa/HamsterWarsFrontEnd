@@ -1,5 +1,4 @@
-.match-winner {
-	/* Overlay ligger i #root i DOM */
+/* .match-winner {
 	position: fixed;
 	background-color:#3E4F61;
 	height: 70vh;
@@ -7,4 +6,13 @@
 	top: 9em;
     border-radius: .2em;
 	
+} */
+
+.winner-grid {
+	display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 3em;
+    align-items: center;
+
 }

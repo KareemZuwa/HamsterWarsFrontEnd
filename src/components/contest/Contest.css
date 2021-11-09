@@ -17,6 +17,10 @@
     align-items: center;   
 }
 
+.random-hamster-grid section article{
+    cursor: pointer;    
+}
+
 .random-hamster-grid section article img {
         margin-top: .4em;
         display: inline-block;

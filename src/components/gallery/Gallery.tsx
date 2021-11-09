@@ -1,4 +1,5 @@
 import { useRecoilState } from 'recoil'
+import { useEffect } from 'react'
 import atomHamsters from '../../atoms/Hamsters'
 import GalleryHeader from './GalleryHeader'
 import '../gallery/Gallery.css'
@@ -14,6 +15,16 @@ const Gallery = () => {
         }) 
         .catch(err => console.log(err));
     }
+
+    useEffect(() => {
+		async function sendRequest() {
+            const response = await fetch('/hamsters')
+            const dataHamster = await response.json() 
+            setHamstersArray(dataHamster)
+        }
+        sendRequest()
+	},[setHamstersArray])
+
     const removeHamsterObject = (hamsterId: string) => {
         setHamstersArray((hamstersArray)=> hamstersArray.filter((hamsterObject => hamsterObject.id !== hamsterId)))}
 

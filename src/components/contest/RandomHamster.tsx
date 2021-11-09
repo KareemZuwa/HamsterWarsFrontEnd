@@ -1,4 +1,5 @@
 import { useRecoilState } from 'recoil'
+import { useEffect } from 'react'
 import atomToggle from '../../atoms/Toggle'
 import atomHamsters from '../../atoms/Hamsters'
 import atomMatchId from '../../atoms/MatchId'
@@ -9,7 +10,7 @@ import MatchWinner from './MatchWinner'
 import './Contest.css'
 
 const RandomHamster = () => {
-     const [hamstersArray] = useRecoilState(atomHamsters)
+     const [hamstersArray, setHamstersArray] = useRecoilState(atomHamsters)
      const [toggle,setToggle] = useRecoilState(atomToggle)
      const [matchId, setMatchId] = useRecoilState(atomMatchId)
 
@@ -17,13 +18,22 @@ const RandomHamster = () => {
     const randomHamster1: Hamster = hamstersArray[Math.floor(Math.random()*hamstersArray.length)];
     //Slumpa hamster 2
     const randomHamster2: Hamster = hamstersArray[Math.floor(Math.random()*hamstersArray.length)];
-    const noDoubles = ()=> {
-        while(randomHamster2.id === randomHamster1.id) {
+    const noDoubles = (hamsterTwo:Hamster)=> {
+        while(hamsterTwo.id === randomHamster1.id) {
             let randomHamster2: Hamster = hamstersArray[Math.floor(Math.random()*hamstersArray.length)];
             return randomHamster2
         }
     }
-    noDoubles();
+    noDoubles(randomHamster2);
+
+    useEffect(() => {
+		async function sendRequest() {
+            const response = await fetch('/hamsters')
+            const dataHamster = await response.json() 
+            setHamstersArray(dataHamster)
+        }
+        sendRequest()
+	},[setHamstersArray])
 
     const matchObjectOne = { winnerId: randomHamster1.id, loserId: randomHamster2.id } 
     const postMatchOne= async() => {
@@ -62,7 +72,7 @@ const RandomHamster = () => {
     return (
         <div className="random-hamster-grid">
             {toggle && <MatchWinner />}
-           
+            {!toggle && 
             <section>
                 <article onClick={()=> {handleWinHamster(randomHamster1) ; handleLosingHamster(randomHamster2); postMatchOne(); sendMatchesRequest(); setToggle(!toggle)}}>
                     <img src={'/img/' + randomHamster1.imgName} alt={randomHamster1.name}/>
@@ -74,7 +84,7 @@ const RandomHamster = () => {
                     <h3>{randomHamster2.name}</h3>
                 </article>
             </section>
-
+            }
         </div>
     )
 }

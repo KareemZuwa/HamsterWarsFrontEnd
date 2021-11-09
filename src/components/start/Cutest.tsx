@@ -14,6 +14,10 @@ const Cutest = () => {
         sendRequest()
 	}, [])
 
+    function refreshPage() {
+        window.location.reload();
+      }    
+
     return (
         <div className="cutest">
             {data ? 
@@ -24,7 +28,7 @@ const Cutest = () => {
                     <p>Namn: {cutest.name}</p>
                     <p>Vinster: {cutest.wins}</p>
                 </section>
-                )) : <h3> Väntar på den sötaste hamstern </h3>}
+                )) : <h3> Väntar på den sötaste hamstern <br/> <br/> Tryck refresh om hamstern ej visas <button className="refresh-button" onClick={refreshPage}>Refresh</button></h3> }
                   
         </div>
     )

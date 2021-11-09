@@ -4,7 +4,7 @@ import RandomHamster from './RandomHamster'
 const Contest = () => {
     return (
         <div>
-            <h2>Här tävlar man</h2>
+            <h2> TÄVLA </h2>
             <RandomHamster />
             
             
