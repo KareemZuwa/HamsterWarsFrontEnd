@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useRecoilState } from 'recoil'
 import atomToggle from '../../atoms/Toggle'
 import atomHamsters from '../../atoms/Hamsters'
+import { Hamster } from '../../models/Hamster'
 import './AddHamster.css'
 
 //Hämta hamster model
@@ -12,7 +13,7 @@ const AddHamster = () => {
 
     //inputfälten
     const [hamsterName, setHamsterName] = useState<string>('')
-    const [age, setAge] = useState<number>()
+    const [age, setAge] = useState<number>(0)
     const [favFood, setFavFood] = useState<string>('')
     const [loves, setLoves] = useState<string>('')
     const [imageUrl, setImageUrl] = useState<string>('')
@@ -38,8 +39,15 @@ const AddHamster = () => {
         const newHamster = await response.json()
         console.log("Success", newHamster);
         // dispatch(actions.addHamster(newHamster))--REDUX
-        await setHamstersArray([...hamstersArray, newHamster])
+        const combineData:Hamster = {...data, id: newHamster.id};
+        await setHamstersArray([...hamstersArray, combineData])
         setToggle(!toggle)
+    }
+
+    const sendHamsterRequest=async () => {
+        const response = await fetch('/hamsters',{ method: 'GET', headers: { 'Content-Type' : 'application/json'}})
+        const hamsterData = await response.json() 
+        console.log (hamsterData)
     }
 
     // valideringsfunktioner som skall trigga classer
@@ -77,7 +85,7 @@ const AddHamster = () => {
                     </div>
 
                     <div className="buttons">
-                    <button onClick={postHamsterToApi}> Lägg Till </button>
+                    <button onClick={() => {postHamsterToApi(); sendHamsterRequest()}}> Lägg Till </button>
 				    <button onClick={()=> setToggle(!toggle)}> Ångra </button>
                     </div>
 				    

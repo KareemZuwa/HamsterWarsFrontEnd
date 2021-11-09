@@ -1,9 +1,9 @@
 import { atom } from 'recoil'
-import { MatchId } from '../models/MatchId'
+import { Matches } from '../models/Matches'
 
-const MatchIdObject = atom<MatchId>({
+const MatchIdObject = atom<Matches>({
     key: 'matchObjectId',
-	default: ''
+	default: {id:'', loserId: '', winnerId: ''}
 })
 
 export default MatchIdObject
