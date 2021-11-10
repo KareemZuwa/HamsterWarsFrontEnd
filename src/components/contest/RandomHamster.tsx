@@ -14,18 +14,18 @@ const RandomHamster = () => {
      const [toggle,setToggle] = useRecoilState(atomToggle)
      const [matchId, setMatchId] = useRecoilState(atomMatchId)
 
-    //Random på två hamstrar
+    //Slumpa hamster 1
     const randomHamster1: Hamster = hamstersArray[Math.floor(Math.random()*hamstersArray.length)];
+   
     //Slumpa hamster 2
     const randomHamster2: Hamster = hamstersArray[Math.floor(Math.random()*hamstersArray.length)];
-    const noDoubles = (hamsterTwo:Hamster)=> {
-        while(hamsterTwo.id === randomHamster1.id) {
-            let randomHamster2: Hamster = hamstersArray[Math.floor(Math.random()*hamstersArray.length)];
-            return randomHamster2
-        }
+    const noDouble = (hamsterTwo: Hamster)=> {
+        if (hamsterTwo.id === randomHamster1.id) {
+            hamsterTwo = hamstersArray[Math.floor(Math.random()*hamstersArray.length)]
+       }
     }
-    noDoubles(randomHamster2);
-
+    noDouble(randomHamster2)
+ 
     useEffect(() => {
 		async function sendRequest() {
             const response = await fetch('/hamsters')
@@ -61,7 +61,6 @@ const RandomHamster = () => {
             console.log(err)
         }
     }
-  
 	const sendMatchesRequest=async () => {
         const response = await fetch('/matches',{ method: 'GET', headers: { 'Content-Type' : 'application/json'}})
         const matchData = await response.json() 
@@ -75,12 +74,18 @@ const RandomHamster = () => {
             {!toggle && 
             <section>
                 <article onClick={()=> {handleWinHamster(randomHamster1) ; handleLosingHamster(randomHamster2); postMatchOne(); sendMatchesRequest(); setToggle(!toggle)}}>
-                    <img src={'/img/' + randomHamster1.imgName} alt={randomHamster1.name}/>
+                    {randomHamster1.imgName.startsWith('hamster')
+                    ?<img src={'/img/' + randomHamster1.imgName} alt={randomHamster1.name}/>
+                    :<img src={randomHamster1.imgName} alt={randomHamster1.name}/>
+                    }
                     <h3>{randomHamster1.name}</h3>
                 </article>
                 <h1>VS</h1>
                 <article onClick={()=> {handleWinHamster(randomHamster2) ; handleLosingHamster(randomHamster1); postMatchTwo(); sendMatchesRequest(); setToggle(!toggle)}}>
-                    <img src={'/img/' + randomHamster2.imgName} alt={randomHamster2.name}/>
+                    {randomHamster2.imgName.startsWith('hamster')
+                    ?<img src={'/img/' + randomHamster2.imgName} alt={randomHamster2.name}/>
+                    :<img src={'/img/' + randomHamster2.imgName} alt={randomHamster2.name}/>
+                    }
                     <h3>{randomHamster2.name}</h3>
                 </article>
             </section>

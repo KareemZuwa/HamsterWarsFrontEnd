@@ -1,8 +1,9 @@
 .match-card {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
-.match-card h3 {
+.match-card h2 {
+    font-size: 1em;
     color: white;
 }

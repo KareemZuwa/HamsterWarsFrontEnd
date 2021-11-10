@@ -49,6 +49,11 @@ const AddHamster = () => {
         const hamsterData = await response.json() 
         console.log (hamsterData)
     }
+    // en godkänd ålder är ett tal som är >= 0 OCH är ett heltal
+	const ageIsValid = isValidAge(age)
+    const nameIsValid = isValidName(hamsterName)
+
+    const formIsValid = nameIsValid && ageIsValid
 
     // valideringsfunktioner som skall trigga classer
     //valideringfsfunktion som skall trigga lägg till knapp
@@ -64,8 +69,8 @@ const AddHamster = () => {
                         className="inputs"/>
                     </div>
                     <div className="input-fields">
-                        <p>Ålder:</p> <input type="number" placeholder="0" 
-                        onChange={e => setAge(e.target.valueAsNumber)} value={age}
+                        <p>Ålder:</p> <input type="text" placeholder="0" 
+                        onChange={e => setAge(Number(e.target.value))} value={age}
                         className="inputs"/>
                     </div>
                     <div className="input-fields">
@@ -85,7 +90,7 @@ const AddHamster = () => {
                     </div>
 
                     <div className="buttons">
-                    <button onClick={() => {postHamsterToApi(); sendHamsterRequest()}}> Lägg Till </button>
+                    <button disabled={!formIsValid} onClick={() => {postHamsterToApi(); sendHamsterRequest()}}> Lägg Till </button>
 				    <button onClick={()=> setToggle(!toggle)}> Ångra </button>
                     </div>
 				    
@@ -94,6 +99,17 @@ const AddHamster = () => {
                 
         </div>
     )
+}
+function isValidAge(age: number): boolean {
+	if( isNaN(age) ) return false
+	if( age < 0 ) return false
+	let ageString = String(age)
+	if( ageString.includes(',') || ageString.includes('.') ) return false
+	// Alternativa sätt att kontrollera om ett tal har decimaler: x % 1 !=== 0, (x - Math.floor(x)) !== 0
+	return true
+}
+function isValidName(name: string): boolean {
+	return name.length >= 2
 }
 
 export default AddHamster

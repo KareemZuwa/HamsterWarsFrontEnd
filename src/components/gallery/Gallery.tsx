@@ -36,7 +36,10 @@ const Gallery = () => {
                     {hamstersArray ?
                     hamstersArray.map(hamster => (
                         <li key={hamster.id}> 
-                        <img src={'/img/' + hamster.imgName} alt="hamster"/>
+                         {hamster.imgName.startsWith('hamster')
+                                ? <img src={'/img/' + hamster.imgName} alt={hamster.name}/>
+                                : <img src={hamster.imgName} alt={hamster.name}/>
+                        }
                         <p>Namn: {hamster.name} </p>
                         <button onClick={()=> {deleteHamster(hamster.id); removeHamsterObject(hamster.id)}}> Radera hamster </button>
                         </li>
