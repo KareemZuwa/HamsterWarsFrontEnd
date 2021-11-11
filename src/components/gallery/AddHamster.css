@@ -6,6 +6,7 @@
 	width: 100vw;
 	top: 0em;
 	left: 0em;
+	z-index: 100;
 }
 
 .overlay .dialog {
@@ -48,4 +49,11 @@
     flex-direction: row;
     justify-content: space-around;
 
+}
+
+.valid {
+	border-color: #14971E;
+}
+.invalid {
+	border-color: #E0471F;
 }

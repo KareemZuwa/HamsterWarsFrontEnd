@@ -8,6 +8,8 @@ const History = () => {
     const [matchObj,setMatchObj] = useState<Matches[]>([])
     const [hamstersArray,setHamstersArray] = useRecoilState(atomHamsters)
 
+    console.log(matchObj)
+
     //fetches
     useEffect(() => {
 		async function sendRequest() {
@@ -28,35 +30,47 @@ const History = () => {
 
     return (
         <div>
-            <h2>HISTORIK</h2>
-
-            {matchObj? 
-            matchObj.map(match => {
-                return (
-                    <div>
-                        <div key={match.id}>{match.id}</div>
-                        {hamstersArray?.map(hamster =>  {
-                            if(hamster.id === match.winnerId) {
-                                <p>{hamster.name}</p>
-
+            <div className="history-wrapper">
+                {matchObj ?
+                    matchObj.map(match => (
+                        <section className="match-wrapper"key={match.id} >
+                            <button>Delete</button>
+                            {
+                                hamstersArray?.map(hamster => {
+                                    if (hamster.id === match.winnerId) {
+                                        return (
+                                            <div key={match.winnerId}>
+                                                <h1>Winner</h1>
+                                                {hamster.imgName.startsWith('http') ?
+                                                    <img src={hamster.imgName} alt={hamster.name} height="50" width="50" />
+                                                    :
+                                                    <img src={`/img/${hamster.imgName}`} alt={hamster.name} height="50" width="50" />
+                                                }
+                                                <h2>{hamster.name}</h2>
+                                            </div>
+                                        )
+                                    }
+                                    if (hamster.id === match.loserId) {
+                                        return (
+                                            <div key={match.loserId}>
+                                                <h1>Loser</h1>
+                                                {hamster.imgName.startsWith('http') ?
+                                                    <img src={hamster.imgName} alt={hamster.name} height="50" width="50" />
+                                                    :
+                                                    <img src={`/img/${hamster.imgName}`} alt={hamster.name} height="50" width="50" />
+                                                }
+                                                <h2>{hamster.name}</h2>
+                                            </div>
+                                        )
+                                    } else {
+                                        return null
+                                    }
+                                })
                             }
-                        })}
-                    </div>
-
-                )
-            })
-            :null}
-            {/* /* {
-                matchObj ?
-                matchObj.map(match=> (
-                    <div className="match-card" key={match.id}>
-                    <h2>Winner: {match.winnerId}</h2>
-                    <h2>VS</h2>
-                    <h2>Loser: {match.loserId}</h2>
-                    </div>
-                ))
-            : null
-            } */}
+                        </section>
+                    ))
+                    : <div>Loading...</div>}
+            </div>
 
             
         </div>

@@ -71,7 +71,8 @@ const RandomHamster = () => {
     return (
         <div className="random-hamster-grid">
             {toggle && <MatchWinner />}
-            {!toggle && 
+
+            
             <section>
                 <article onClick={()=> {handleWinHamster(randomHamster1) ; handleLosingHamster(randomHamster2); postMatchOne(); sendMatchesRequest(); setToggle(!toggle)}}>
                     {randomHamster1.imgName.startsWith('hamster')
@@ -89,7 +90,7 @@ const RandomHamster = () => {
                     <h3>{randomHamster2.name}</h3>
                 </article>
             </section>
-            }
+            
         </div>
     )
 }

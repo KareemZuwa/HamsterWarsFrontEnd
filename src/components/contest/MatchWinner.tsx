@@ -21,8 +21,9 @@ const MatchWinner = () => {
             setMatches(matchData)
         }
         sendRequest()
+
 	}, [setMatches])
-    
+
     //Hitta matchobjektet
     const findRightMatch = matches.filter(match => match.id === matchId.id)
     const findWinnerLoser = findRightMatch.find(object=> object.winnerId)
@@ -33,14 +34,14 @@ const MatchWinner = () => {
     console.log(findWinnerHamster)
 
     return (
+        <div className="overlayWinner">
         <div className="match-winner">
             <section className="winner-grid">
                 {findWinnerHamster ? 
                     <article>
                             {findWinnerHamster.imgName.startsWith('hamster')
                             ?<img src={'/img/' + findWinnerHamster.imgName} alt={findWinnerHamster.name}/>
-                            :<img src={findWinnerHamster.imgName} alt={findWinnerHamster.name}/>
-                            }
+                            :<img src={findWinnerHamster.imgName} alt={findWinnerHamster.name}/>}
                             <h1>{findWinnerHamster.name} Vann 😺</h1>
                             <p>Vinster: {findWinnerHamster.wins +1} , Förluster: {findWinnerHamster.defeats}</p>
                     </article>
@@ -49,8 +50,7 @@ const MatchWinner = () => {
                     <article>
                             {findLoserHamster.imgName.startsWith('hamster')
                             ?<img src={'/img/' + findLoserHamster.imgName} alt={findLoserHamster.name}/>
-                            :<img src={findLoserHamster.imgName} alt={findLoserHamster.name}/>
-                            }
+                            :<img src={findLoserHamster.imgName} alt={findLoserHamster.name}/>}
                             <h1>{findLoserHamster.name} förlorade 😿</h1>
                             <p>Vinster: {findLoserHamster.wins} , Förluster: {findLoserHamster.defeats +1}</p>
                     </article>
@@ -58,6 +58,7 @@ const MatchWinner = () => {
             </section>
 
             <button onClick={()=>setToggle(!toggle)}className="new-fight-button"> NY FIGHT </button>
+        </div>
         </div>
     )
 }

@@ -1,11 +1,14 @@
 import { useRecoilState } from 'recoil'
+import { useState } from 'react'
 import { useEffect } from 'react'
 import atomHamsters from '../../atoms/Hamsters'
 import GalleryHeader from './GalleryHeader'
+import Card from './Card'
 import '../gallery/Gallery.css'
+import atomAltHamster from '../../atoms/AltHamster'
 
 const Gallery = () => {
-    const [hamstersArray,setHamstersArray] = useRecoilState(atomHamsters)
+    const [hamstersArray,setHamstersArray] = useRecoilState(atomAltHamster)
 
     const deleteHamster = async function deleteHamster(id: string) {
         fetch('/hamsters/' + id, { method: 'DELETE' }) 
@@ -26,26 +29,20 @@ const Gallery = () => {
 	},[setHamstersArray])
 
     const removeHamsterObject = (hamsterId: string) => {
-        setHamstersArray((hamstersArray)=> hamstersArray.filter((hamsterObject => hamsterObject.id !== hamsterId)))}
+        setHamstersArray((hamstersArray)=> hamstersArray!.filter((hamsterObject => hamsterObject.id !== hamsterId)))}
 
     return (
         <div>
             <GalleryHeader />
-            <ul className="hamsters">
+            <div className="hamsters">
 
                     {hamstersArray ?
                     hamstersArray.map(hamster => (
-                        <li key={hamster.id}> 
-                         {hamster.imgName.startsWith('hamster')
-                                ? <img src={'/img/' + hamster.imgName} alt={hamster.name}/>
-                                : <img src={hamster.imgName} alt={hamster.name}/>
-                        }
-                        <p>Namn: {hamster.name} </p>
-                        <button onClick={()=> {deleteHamster(hamster.id); removeHamsterObject(hamster.id)}}> Radera hamster </button>
-                        </li>
-                    )): <h3> Väntar på galleri med hamsters </h3>}
+                        <Card key={hamster.id} hamster={hamster} remove={removeHamsterObject} deleteFromApi={deleteHamster}/>
+                 
+                    )):<h3> Väntar på galleri med hamsters </h3>}
                
-            </ul>
+            </div>
             
         </div>
     )

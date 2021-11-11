@@ -1,9 +1,11 @@
-.match-card {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
+
 .match-card h2 {
     font-size: 1em;
     color: white;
+}
+
+.match-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }

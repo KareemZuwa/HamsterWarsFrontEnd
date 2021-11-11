@@ -38,10 +38,10 @@ const AddHamster = () => {
         body: JSON.stringify(data)})
         const newHamster = await response.json()
         console.log("Success", newHamster);
-        // dispatch(actions.addHamster(newHamster))--REDUX
         const combineData:Hamster = {...data, id: newHamster.id};
         await setHamstersArray([...hamstersArray, combineData])
         setToggle(!toggle)
+        sendHamsterRequest()
     }
 
     const sendHamsterRequest=async () => {
@@ -52,8 +52,11 @@ const AddHamster = () => {
     // en godkänd ålder är ett tal som är >= 0 OCH är ett heltal
 	const ageIsValid = isValidAge(age)
     const nameIsValid = isValidName(hamsterName)
+    const foodValid = isValidFood(favFood)
+    const lovesValid = isValidLoves(loves)
+    const ImgNameValid = isValidImgName(imageUrl)
 
-    const formIsValid = nameIsValid && ageIsValid
+    const formIsValid = nameIsValid && ageIsValid && foodValid && lovesValid && ImgNameValid
 
     // valideringsfunktioner som skall trigga classer
     //valideringfsfunktion som skall trigga lägg till knapp
@@ -90,7 +93,7 @@ const AddHamster = () => {
                     </div>
 
                     <div className="buttons">
-                    <button disabled={!formIsValid} onClick={() => {postHamsterToApi(); sendHamsterRequest()}}> Lägg Till </button>
+                    <button disabled={!formIsValid} onClick={() => {postHamsterToApi(); window.location.reload()}}> Lägg Till </button>
 				    <button onClick={()=> setToggle(!toggle)}> Ångra </button>
                     </div>
 				    
@@ -110,6 +113,15 @@ function isValidAge(age: number): boolean {
 }
 function isValidName(name: string): boolean {
 	return name.length >= 2
+}
+function isValidFood(favFood: string): boolean {
+	return favFood.length >= 2
+}
+function isValidLoves(loves: string): boolean {
+	return loves.length >= 2
+}
+function isValidImgName(ImgName: string): boolean {
+	return ImgName.length >= 4
 }
 
 export default AddHamster

@@ -1,12 +1,21 @@
-/* .match-winner {
+/* .overlaywinner {
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.5);
+	height: 100vh;
+	width: 100vw;
+	top: 0em;
+	left: 0em;
+} */
+
+.match-winner {
 	position: fixed;
 	background-color:#3E4F61;
-	height: 70vh;
+	height: 72vh;
 	width: 80vw;
-	top: 9em;
+	top: 11em;
     border-radius: .2em;
 	
-} */
+} 
 
 .winner-grid {
 	display: flex;

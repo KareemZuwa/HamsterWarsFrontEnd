@@ -24,7 +24,9 @@ const Cutest = () => {
             data.map(cutest => (
                 <section key={cutest.id} className="cutest-info">
                     <img src={Crown} alt="crown"/>
-                    <img className="cutest-hamster-pic" src={'/img/' + cutest.imgName} alt="cutesthamster" width="200px"/>
+                    {cutest.imgName.startsWith('hamster')
+                    ?<img className="cutest-hamster-pic" src={'/img/' + cutest.imgName} alt={cutest.name} width="200px"/>
+                    :<img className="cutest-hamster-pic" src={cutest.imgName} alt={cutest.name} width="200px"/>}
                     <p>Namn: {cutest.name}</p>
                     <p>Vinster: {cutest.wins}</p>
                 </section>

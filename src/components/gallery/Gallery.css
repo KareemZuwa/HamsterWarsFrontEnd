@@ -4,7 +4,6 @@
   justify-items: center;
 	grid-gap: 1.5em;
 	padding: 1em;
-
 } 
 
 .galleri-rubrik button, .hamsters button {
@@ -13,7 +12,7 @@
   padding:0.35em 1.2em;
   border-radius:0.12em;
   border:0.1em solid #e8e8e8;
-  margin:3em 0.3em 0.3em 0em;
+  margin:2em 0.3em 0.3em 0em;
   box-sizing: border-box;
   color: #e8e8e8;
   transition: all 0.2s;
@@ -26,12 +25,12 @@
 }
 
 
-.hamsters li {
+.hamsters section {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 12em;
+    /* height: 13em; */
     width: 9em;
     background-color: #3E4F61;
     padding: 0.5em 0.5em 1.7em;
@@ -51,4 +50,20 @@
 .hamsters p {
   color: white;
   margin-bottom: 0;
+}
+.info {
+  margin:.5em;
+  cursor: pointer;
+}
+
+.extra-info{
+  top: 1em;
+  background-color:#3E4F61;
+  width: 14em;
+  height:15.5em;
+  transition: background 2s ease,
+              padding 2s linear;
+  /* transition: all 4s ease-in-out; */
+  border-radius: .2em;
+  transform: rotate(1turn);
 }
