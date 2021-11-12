@@ -84,7 +84,7 @@ const AddHamster = () => {
                         className={ageClass}/>
                     </div>
                     <div className="input-fields">
-                        <p>Favorit Mat:</p> <input type="text" placeholder="Favorit Mat längre en ett ord"
+                        <p>Favorit Mat:</p> <input type="text" placeholder="Favorit Mat ett ord eller mer"
                         onChange={e => setFavFood(e.target.value)} value={favFood}
                         className={foodClass}/>
                     </div>
