@@ -49,7 +49,10 @@ const History = () => {
                                                 }
                                                 <h2>{hamster.name}</h2>
                                             </div>
+
+                                            
                                         )
+        
                                     }
                                     if (hamster.id === match.loserId) {
                                         return (
