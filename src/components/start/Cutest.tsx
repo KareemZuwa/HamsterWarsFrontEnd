@@ -27,7 +27,7 @@ const Cutest = () => {
                     {cutest.imgName.startsWith('hamster')
                     ?<img className="cutest-hamster-pic" src={'/img/' + cutest.imgName} alt={cutest.name} width="200px"/>
                     :<img className="cutest-hamster-pic" src={cutest.imgName} alt={cutest.name} width="200px"/>}
-                    <p>Namn: {cutest.name}</p>
+                    <p>{cutest.name} är sötast av dem alla</p>
                     <p>Vinster: {cutest.wins}</p>
                 </section>
                 )) : <h3> Väntar på den sötaste hamstern <br/> <br/> Tryck refresh om hamstern ej visas <button className="refresh-button" onClick={refreshPage}>Refresh</button></h3> }

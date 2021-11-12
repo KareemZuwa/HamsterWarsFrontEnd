@@ -56,6 +56,13 @@ const AddHamster = () => {
     const lovesValid = isValidLoves(loves)
     const ImgNameValid = isValidImgName(imageUrl)
 
+    //Classes
+    const nameClass = nameIsValid ? 'valid': 'invalid';
+    const ageClass = ageIsValid ? 'valid': 'invalid';
+    const foodClass = foodValid ? 'valid' : 'invalid';
+    const lovesClass = lovesValid ? 'valid' : 'invalid';
+    const imgNameClass = ImgNameValid ? 'valid' : 'invalid';
+
     const formIsValid = nameIsValid && ageIsValid && foodValid && lovesValid && ImgNameValid
 
     // valideringsfunktioner som skall trigga classer
@@ -67,33 +74,33 @@ const AddHamster = () => {
                 <h3> Lägg Till Ny Hamster </h3>
                 <div className="form">
                     <div className="input-fields">
-                        <p>Namn:</p> <input type="text" placeholder="Namn"
+                        <p>Namn:</p> <input type="text" placeholder="Namn längre än 2 karaktärer"
                         onChange={e => setHamsterName(e.target.value)} value={hamsterName}
-                        className="inputs"/>
+                        className={nameClass}/>
                     </div>
                     <div className="input-fields">
                         <p>Ålder:</p> <input type="text" placeholder="0" 
                         onChange={e => setAge(Number(e.target.value))} value={age}
-                        className="inputs"/>
+                        className={ageClass}/>
                     </div>
                     <div className="input-fields">
-                        <p>Favorit Mat:</p> <input type="text" placeholder="Favorit Mat"
+                        <p>Favorit Mat:</p> <input type="text" placeholder="Favorit Mat längre en ett ord"
                         onChange={e => setFavFood(e.target.value)} value={favFood}
-                        className="inputs"/>
+                        className={foodClass}/>
                     </div>
                     <div className="input-fields">
-                        <p>Älskar:</p> <input type="text" placeholder="Älskar"
+                        <p>Älskar:</p> <input type="text" placeholder="Älskar längre än 2 bokstäver"
                         onChange={e => setLoves(e.target.value)} value={loves}
-                        className="inputs"/>
+                        className={lovesClass}/>
                     </div>
                     <div className="input-fields">
-                        <p>Bild URL:</p> <input type="text" placeholder="Bild URL"
+                        <p>Bild URL:</p> <input type="text" placeholder="Bild URL eller lokal bild"
                         onChange={e => setImageUrl(e.target.value)} value={imageUrl}
-                        className="inputs"/>
+                        className={imgNameClass}/>
                     </div>
 
                     <div className="buttons">
-                    <button disabled={!formIsValid} onClick={() => {postHamsterToApi(); window.location.reload()}}> Lägg Till </button>
+                    <button className="add-button" disabled={!formIsValid} onClick={() => {postHamsterToApi(); window.location.reload()}}> Lägg Till </button>
 				    <button onClick={()=> setToggle(!toggle)}> Ångra </button>
                     </div>
 				    
@@ -121,7 +128,7 @@ function isValidLoves(loves: string): boolean {
 	return loves.length >= 2
 }
 function isValidImgName(ImgName: string): boolean {
-	return ImgName.length >= 4
+	return ImgName.length >= 6
 }
 
 export default AddHamster

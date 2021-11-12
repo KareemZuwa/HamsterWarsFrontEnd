@@ -1,7 +1,5 @@
 import { useRecoilState } from 'recoil'
-import { useState } from 'react'
 import { useEffect } from 'react'
-import atomHamsters from '../../atoms/Hamsters'
 import GalleryHeader from './GalleryHeader'
 import Card from './Card'
 import '../gallery/Gallery.css'
@@ -9,7 +7,7 @@ import atomAltHamster from '../../atoms/AltHamster'
 
 const Gallery = () => {
     const [hamstersArray,setHamstersArray] = useRecoilState(atomAltHamster)
-
+   
     const deleteHamster = async function deleteHamster(id: string) {
         fetch('/hamsters/' + id, { method: 'DELETE' }) 
         .then(res => res.json()) 
@@ -38,7 +36,7 @@ const Gallery = () => {
 
                     {hamstersArray ?
                     hamstersArray.map(hamster => (
-                        <Card key={hamster.id} hamster={hamster} remove={removeHamsterObject} deleteFromApi={deleteHamster}/>
+                        <Card key={hamster.id} hamster={hamster} remove={removeHamsterObject} deleteFromApi={deleteHamster} />
                  
                     )):<h3> Väntar på galleri med hamsters </h3>}
                

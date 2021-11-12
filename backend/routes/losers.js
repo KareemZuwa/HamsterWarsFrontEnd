@@ -13,7 +13,7 @@ losers.get('/', async (req, res) => {
 	//filter by deafeat
     let defeatedHamsters = matchLosersArray.filter(cute => cute.defeats)
 	// //Choose top 5 winning Hamsters
-    let bottom5Hamsters = defeatedHamsters.sort((a,b) => b-a).slice(0,5);
+    let bottom5Hamsters = defeatedHamsters.sort((a,b) => b-a).slice(0,4);
 	// console.log(bottom5Hamsters);
 	
 	res.status(200).send(bottom5Hamsters);

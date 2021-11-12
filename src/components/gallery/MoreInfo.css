@@ -1,0 +1,26 @@
+.more-info-overlay {
+	/* Overlay ligger i #root i DOM */
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.5);
+	height: 100vh;
+	width: 100vw;
+	top: 0em;
+	left: 0em;
+	z-index: 1;
+}
+
+.more-info-overlay .extra-info {
+	background-color: #3E4F61;
+	color: #e8e8e8;
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	padding:2em 2em 5em;
+    border-radius: .2em;
+}
+
+.info{
+    padding-bottom: 2em;
+}

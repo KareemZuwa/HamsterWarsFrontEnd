@@ -1,5 +1,6 @@
 import {Hamster} from '../../models/Hamster'
 import  {useState} from 'react'
+import MoreInfo from './MoreInfo'
 
 interface CardProps {
     hamster: Hamster;
@@ -7,8 +8,9 @@ interface CardProps {
     deleteFromApi: (hamsterId: string)=> void;
 }
 
-const Card = ({hamster,deleteFromApi, remove}:CardProps) => {
+const Card = ({hamster,deleteFromApi,remove}:CardProps) => {
     const [showInfo, setShowInfo] = useState(false)
+
 
     return (
         <div>
@@ -20,18 +22,10 @@ const Card = ({hamster,deleteFromApi, remove}:CardProps) => {
                         
                         <p>{hamster.name} </p>
             
-                        {showInfo &&
-                            <div className={"extra-info"}>
-                                <p>Vinster: {hamster.wins}</p>
-                                <p>Förluster: {hamster.defeats}</p>
-                                <p>Ålder: {hamster.age}</p>
-                                <p>FavoritMat: {hamster.favFood}</p>
-                                <p>Älskar: {hamster.loves}</p>
-                            </div> 
-                         }
+                        {showInfo && <MoreInfo hamster={hamster} setShowInfo={setShowInfo}/>}
                         
 
-                        <button type="button" onClick={()=>setShowInfo(!showInfo)}className="info">ℹ️</button>
+                        <button type="button" onClick={()=>setShowInfo(!showInfo)}className="info">Mer Info</button>
                         <button onClick={()=> {deleteFromApi(hamster.id); remove(hamster.id)}}>  Radera hamster </button>
             
                         </section>

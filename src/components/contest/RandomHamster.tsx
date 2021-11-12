@@ -70,7 +70,7 @@ const RandomHamster = () => {
     
     return (
         <div className="random-hamster-grid">
-            {toggle && <MatchWinner />}
+            {toggle && <MatchWinner random1={randomHamster1} random2={randomHamster2}/>}
 
             
             <section>
@@ -85,7 +85,7 @@ const RandomHamster = () => {
                 <article onClick={()=> {handleWinHamster(randomHamster2) ; handleLosingHamster(randomHamster1); postMatchTwo(); sendMatchesRequest(); setToggle(!toggle)}}>
                     {randomHamster2.imgName.startsWith('hamster')
                     ?<img src={'/img/' + randomHamster2.imgName} alt={randomHamster2.name}/>
-                    :<img src={'/img/' + randomHamster2.imgName} alt={randomHamster2.name}/>
+                    :<img src={randomHamster2.imgName} alt={randomHamster2.name}/>
                     }
                     <h3>{randomHamster2.name}</h3>
                 </article>

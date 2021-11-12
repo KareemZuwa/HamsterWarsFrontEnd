@@ -5,8 +5,14 @@ import atomMatches from '../../atoms/MatchObject'
 import atomHamsters from '../../atoms/Hamsters'
 import atomMatchId from '../../atoms/MatchId'
 import './MatchWinner.css'
+import { Hamster } from '../../models/Hamster'
 
-const MatchWinner = () => {
+interface MatchWinnerProps {
+    random1:Hamster;
+    random2:Hamster;
+}
+
+const MatchWinner = ({random1, random2}:MatchWinnerProps) => {
     const [toggle,setToggle] = useRecoilState(atomToggle)
     const [hamstersArray] = useRecoilState(atomHamsters)
     const [matches,setMatches] = useRecoilState(atomMatches)

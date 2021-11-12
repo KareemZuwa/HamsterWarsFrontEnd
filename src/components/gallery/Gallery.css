@@ -67,3 +67,15 @@
   border-radius: .2em;
   transform: rotate(1turn);
 }
+
+@media screen and (max-width: 950px) {
+  .hamsters {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .hamsters {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

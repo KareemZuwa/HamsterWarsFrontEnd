@@ -18,7 +18,7 @@ function App() {
         <Header />
         <main>
         <Switch>
-            <Route path="/" exact> <Start /> </Route>
+            <Route path="/" exact><Start /> </Route>
             <Route path="/tävla"> <Contest /> </Route>
             <Route path="/galleri"> <Gallery /> </Route>
             <Route path="/statistik"> <Stats /> </Route>

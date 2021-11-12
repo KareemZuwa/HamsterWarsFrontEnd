@@ -30,11 +30,12 @@ const History = () => {
 
     return (
         <div>
+            <h2>HISTORIK</h2>
             <div className="history-wrapper">
                 {matchObj ?
                     matchObj.map(match => (
                         <section className="match-wrapper"key={match.id} >
-                            <button>Delete</button>
+                            {/* <button>Delete</button> */}
                             {
                                 hamstersArray?.map(hamster => {
                                     if (hamster.id === match.winnerId) {
